@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,21 +28,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text="0"
         android:id="@+id/tv_score_one"
+        android:textColor="#fd0303"
         android:layout_below="@+id/tv_club_one"
-        android:layout_toRightOf="@+id/tv_club_one"
-        android:layout_toEndOf="@+id/tv_club_one" />
+        android:layout_alignLeft="@+id/tv_status"
+        android:layout_alignStart="@+id/tv_status" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
+        android:text="9"
         android:id="@+id/tv_score_two"
         android:layout_below="@+id/tv_club_two"
-        android:layout_toLeftOf="@+id/tv_club_two"
-        android:layout_toStartOf="@+id/tv_club_two" />
+        android:layout_alignRight="@+id/tv_status"
+        android:layout_alignEnd="@+id/tv_status"
+        android:textColor="#FFFD0303" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -51,9 +52,9 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="Small Text"
         android:id="@+id/tv_status"
-        android:layout_alignTop="@+id/tv_time"
-        android:layout_toRightOf="@+id/tv_score_one"
-        android:layout_toEndOf="@+id/tv_score_one" />
+        android:textColor="#e921ca0a"
+        android:layout_above="@+id/tv_club_two"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"

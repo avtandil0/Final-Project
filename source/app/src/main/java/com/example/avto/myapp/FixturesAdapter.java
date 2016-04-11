@@ -34,13 +34,15 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
     public void onBindViewHolder(FixturesAdapter.CustomViewHolder holder, int position) {
         final MyFixtures myFixtures = fixtureList.get(position);
 
+        String firstClub=myFixtures.firstClub.toString()+"      ";
+        String secondClub=myFixtures.secondClub.toString()+"      ";
         //Setting text view title
         holder.st.setText(myFixtures.status);
-        holder.fr.setText(myFixtures.firstClub);
-        holder.sec.setText(myFixtures.secondClub);
+        holder.fr.setText(firstClub.substring(0,10));
+        holder.sec.setText(secondClub.substring(0,10));
         holder.frclsc.setText(myFixtures.firstClubScore);
         holder.secclsc.setText(myFixtures.secondClubScore);
-        holder.t.setText(myFixtures.time);
+        holder.t.setText(myFixtures.time.substring(0,16));
 
         holder.fr.setTag(holder);
         holder.sec.setTag(holder);

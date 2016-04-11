@@ -14,13 +14,13 @@ import java.net.URL;
 /**
  * Created by avto on 4/9/2016.
  */
-public class GetPlayer extends AsyncTask<String, Void, Integer> {
+public class GetPlayer extends AsyncTask<String, Void, String> {
 
 
     String players;
 
     @Override
-    protected Integer doInBackground(String... params) {
+    protected String doInBackground(String... params) {
         Integer result = 0;
         HttpURLConnection urlConnection;
         try {
@@ -37,14 +37,13 @@ public class GetPlayer extends AsyncTask<String, Void, Integer> {
                     response.append(line);
                 }
                 parseResult(response.toString());
-                result = 1; // Successful
-            } else {
-                result = 0; //"Failed to fetch data!";
+            }else {
+                return "Faild";
             }
         } catch (Exception e) {
             e.toString();
         }
-        return result; //"Failed to fetch data!";
+        return players;
     }
 
    /* @Override

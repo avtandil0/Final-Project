@@ -17,6 +17,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 public class TeamAcivity extends AppCompatActivity {
@@ -96,15 +97,21 @@ public class TeamAcivity extends AppCompatActivity {
             Team item=new Team();
             JSONObject jsonObject1=jsonObject.optJSONObject("_links");
             JSONObject jsonObject2=jsonObject1.optJSONObject("players");
+            //second asynctask
             String teamHref=jsonObject2.optString("href");
             GetPlayer getPlayer=new GetPlayer();
-            item.team_player=""+getPlayer.execute(teamHref);
+            item.team_player=getPlayer.execute(teamHref).get();
+
             item.team_name=jsonObject.optString("name");
             String s=jsonObject.optString("crestUrl");
             item.image=s;
             teams.add(item);
 
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
