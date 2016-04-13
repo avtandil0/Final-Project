@@ -58,6 +58,8 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
                 Intent intent=new Intent(mContext,TeamAcivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("href", myFixtures.getFirstClubUrl);
+                String playersHref=myFixtures.getFirstClubUrl+"/players";
+                extras.putString("playersHref",playersHref);
                 intent.putExtras(extras);
                 mContext.startActivity(intent);
 
@@ -74,6 +76,8 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
                 Intent intent=new Intent(mContext,TeamAcivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("href", myFixtures.getSecondClubUrl);
+                String playersHref=myFixtures.getSecondClubUrl+"/players";
+                extras.putString("playersHref",playersHref);
                 intent.putExtras(extras);
                 mContext.startActivity(intent);
 

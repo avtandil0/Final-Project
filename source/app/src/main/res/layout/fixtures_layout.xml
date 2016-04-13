@@ -28,8 +28,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/tv_club_one"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
+        android:layout_toLeftOf="@+id/tv_club_two"
+        android:layout_toStartOf="@+id/tv_club_two">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="0"
+            android:id="@+id/tv_score_one"
+            android:textColor="#fd0303"
+            android:layout_marginLeft="160dp"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,16 +46,9 @@
             android:text="9"
             android:id="@+id/tv_score_two"
             android:textColor="#FFFD0303"
-            android:layout_marginLeft="160dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="0"
-            android:id="@+id/tv_score_one"
-            android:textColor="#fd0303"
             android:layout_marginLeft="40dp"/>
+
+
     </LinearLayout>
 
 

@@ -25,7 +25,8 @@ public class TeamAcivity extends AppCompatActivity {
     private List<Team> teams;
     private RecyclerView mRecyclerView;
     private TeamAdapter madapter;
-
+    String playerHref;
+    String pls;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +37,21 @@ public class TeamAcivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         Bundle extras = getIntent().getExtras();
-        String myurl1=extras.getString("href");
+        String cluburl=extras.getString("href");
+        String clubPlayersUrl=extras.getString("playersHref");
+
+        GetPlayer getPlayer=new GetPlayer();
+        try {
+            pls=getPlayer.execute(clubPlayersUrl).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         // Downloading data from below url
-        final String url2 = myurl1;
+        final String url2 = cluburl;
         new TeamAcivity.AsyncHttpTask().execute(url2);
+
     }
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
 
@@ -66,6 +78,7 @@ public class TeamAcivity extends AppCompatActivity {
                         response.append(line);
                     }
                     parseResult(response.toString());
+
                     result = 1; // Successful
                 } else {
                     result = 0; //"Failed to fetch data!";
@@ -98,20 +111,18 @@ public class TeamAcivity extends AppCompatActivity {
             JSONObject jsonObject1=jsonObject.optJSONObject("_links");
             JSONObject jsonObject2=jsonObject1.optJSONObject("players");
             //second asynctask
-            String teamHref=jsonObject2.optString("href");
+           /* String teamHref=jsonObject2.optString("href");
             GetPlayer getPlayer=new GetPlayer();
-            item.team_player=getPlayer.execute(teamHref).get();
+            item.team_player=getPlayer.execute(teamHref).get();*/
+            playerHref=jsonObject2.optString("href");;
 
+            item.team_player=pls;
             item.team_name=jsonObject.optString("name");
             String s=jsonObject.optString("crestUrl");
             item.image=s;
             teams.add(item);
 
         } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }

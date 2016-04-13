@@ -30,7 +30,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Players"
         android:id="@+id/tv_team_players"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/iv_team_image"
-        android:layout_alignEnd="@+id/iv_team_image" />
+        android:layout_below="@+id/iv_team_image"
+        android:layout_alignLeft="@+id/tv_team"
+        android:layout_alignStart="@+id/tv_team" />
 </RelativeLayout>

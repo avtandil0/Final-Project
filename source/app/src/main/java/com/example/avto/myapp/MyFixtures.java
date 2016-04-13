@@ -12,6 +12,8 @@ public class MyFixtures {
     public String time;
     public String getFirstClubUrl;
     public String getSecondClubUrl;
+    public String getFirstClubPlayersUrl;
+    public String getSecondClubPlayersUrl;
     public MyFixtures(){
         this.status=status;
         this.firstClub=firstClub;
@@ -19,6 +21,8 @@ public class MyFixtures {
         this.firstClubScore=firstClubScore;
         this.secondClubScore=secondClubScore;
         this.time=time;
+        this.getFirstClubPlayersUrl=getFirstClubPlayersUrl;
+        this.getSecondClubPlayersUrl=getSecondClubPlayersUrl;
 
     }
 }
