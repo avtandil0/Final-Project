@@ -44,6 +44,9 @@ public class FixturesActivity extends AppCompatActivity {
         new FixturesActivity.AsyncHttpTask().execute(url);
 
     }
+
+    
+
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
 
         @Override

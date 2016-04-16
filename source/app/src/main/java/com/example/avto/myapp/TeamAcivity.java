@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.json.JSONException;
@@ -31,7 +33,10 @@ public class TeamAcivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_acivity);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarr);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_team);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,6 +58,16 @@ public class TeamAcivity extends AppCompatActivity {
         new TeamAcivity.AsyncHttpTask().execute(url2);
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
 
         @Override
@@ -110,14 +125,15 @@ public class TeamAcivity extends AppCompatActivity {
             Team item=new Team();
             JSONObject jsonObject1=jsonObject.optJSONObject("_links");
             JSONObject jsonObject2=jsonObject1.optJSONObject("players");
-            //second asynctask
-           /* String teamHref=jsonObject2.optString("href");
-            GetPlayer getPlayer=new GetPlayer();
-            item.team_player=getPlayer.execute(teamHref).get();*/
+
             playerHref=jsonObject2.optString("href");;
 
             item.team_player=pls;
-            item.team_name=jsonObject.optString("name");
+            String info="Name : \n"+jsonObject.optString("name");
+            info+="\n\n";
+            info+="Market Value : \n"+jsonObject.optString("squadMarketValue");
+            item.team_name=info;
+
             String s=jsonObject.optString("crestUrl");
             item.image=s;
             teams.add(item);

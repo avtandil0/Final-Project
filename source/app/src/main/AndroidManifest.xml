@@ -22,10 +22,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FixturesActivity"
+            android:name="com.example.avto.myapp.FixturesActivity"
+            android:allowBackup="true"
+
+            android:supportsRtl="true"
             android:label="@string/title_activity_fixtures"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".TeamAcivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="com.example.avto.myapp.FixturesActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".TeamAcivity"
+            android:label="@string/team">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.avto.myapp.FixturesActivity">
+
+            </meta-data>
+
+        </activity>
     </application>
 
 </manifest>

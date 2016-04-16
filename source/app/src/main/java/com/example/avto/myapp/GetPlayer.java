@@ -43,6 +43,7 @@ public class GetPlayer extends AsyncTask<String, Void, String> {
         } catch (Exception e) {
             e.toString();
         }
+        //players=players.substring(4);
         return players;
     }
 
@@ -67,6 +68,7 @@ public class GetPlayer extends AsyncTask<String, Void, String> {
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject player = jsonArray.optJSONObject(i);
                 players += player.optString("name");
+                players+="\n";
             }
 
         } catch (JSONException e) {
