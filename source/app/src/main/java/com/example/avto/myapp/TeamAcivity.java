@@ -63,7 +63,8 @@ public class TeamAcivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         if(id==android.R.id.home){
-            onBackPressed();
+            finish();
+            System.exit(0);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -128,7 +129,7 @@ public class TeamAcivity extends AppCompatActivity {
 
             playerHref=jsonObject2.optString("href");;
 
-            item.team_player=pls;
+            item.team_player=pls.substring(4);
             String info="Name : \n"+jsonObject.optString("name");
             info+="\n\n";
             info+="Market Value : \n"+jsonObject.optString("squadMarketValue");
