@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -33,6 +34,8 @@ public class FixturesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fixtures);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_fixtures);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -134,4 +137,13 @@ public class FixturesActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id=item.getItemId();
+        if(id==android.R.id.home){
+            finish();
+            System.exit(0);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

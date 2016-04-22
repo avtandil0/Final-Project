@@ -16,4 +16,6 @@
         android:layout_height="match_parent"
         android:id="@+id/rv_fixtures"></android.support.v7.widget.RecyclerView>
 
+
+
 </RelativeLayout>

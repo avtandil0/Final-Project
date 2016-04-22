@@ -32,4 +32,14 @@
         android:text="Players"
         android:id="@+id/tv_team_players"
         android:layout_marginLeft="200dp"/>
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="FIXTURE"
+        android:id="@+id/bt_fixture"
+        android:layout_below="@+id/tv_team"
+        android:layout_alignLeft="@+id/tv_team"
+        android:layout_alignStart="@+id/tv_team"
+        android:layout_marginTop="105dp"/>
 </RelativeLayout>
