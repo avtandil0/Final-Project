@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -52,21 +51,13 @@ public class TeamAcivity extends AppCompatActivity {
         String clubPlayersUrl=extras.getString("playersHref");
 
         url_fixture=cluburl+"/fixtures";
-        button_fixture=(Button)findViewById(R.id.bt_fixture);
-//        button_fixture.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent=new Intent(getApplicationContext(),FixturesActivity.class);
-//                Bundle extras1 = new Bundle();
-//                extras1.putString("href", url_fixture);
-//                intent.putExtras(extras1);
-//                startActivity(intent);
-//            }
-//        });
+
+
 
         GetPlayer getPlayer=new GetPlayer();
         try {
             pls=getPlayer.execute(clubPlayersUrl).get();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -74,7 +65,11 @@ public class TeamAcivity extends AppCompatActivity {
         }
         // Downloading data from below url
         final String url2 = cluburl;
+
         new TeamAcivity.AsyncHttpTask().execute(url2);
+        overridePendingTransition(R.anim.lefttoright, R.anim.stable);
+
+
 
     }
 
@@ -119,7 +114,8 @@ public class TeamAcivity extends AppCompatActivity {
                     result = 0; //"Failed to fetch data!";
                 }
             } catch (Exception e) {
-                Log.d(TAG, e.getLocalizedMessage());
+                finish();
+                System.exit(0);
             }
             return result; //"Failed to fetch data!";
         }
@@ -163,15 +159,11 @@ public class TeamAcivity extends AppCompatActivity {
         }
     }
     public void setButton_fixture(View view){
-        button_fixture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getApplicationContext(),FixturesActivity.class);
-                Bundle extras1 = new Bundle();
-                extras1.putString("href", url_fixture);
-                intent.putExtras(extras1);
-                startActivity(intent);
-            }
-        });
+
+        Intent intent = new Intent(getApplicationContext(), FixturesActivity.class);
+        Bundle extras1 = new Bundle();
+        extras1.putString("href", url_fixture);
+        intent.putExtras(extras1);
+        startActivity(intent);
     }
 }

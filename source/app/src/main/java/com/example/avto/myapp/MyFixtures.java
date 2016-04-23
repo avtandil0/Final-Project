@@ -23,6 +23,5 @@ public class MyFixtures {
         this.time=time;
         this.getFirstClubPlayersUrl=getFirstClubPlayersUrl;
         this.getSecondClubPlayersUrl=getSecondClubPlayersUrl;
-
     }
 }

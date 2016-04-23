@@ -2,17 +2,11 @@ package com.example.avto.myapp;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -49,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         // Downloading data from below url
         final String url = "http://api.football-data.org/v1/soccerseasons/?season=2015";
         new AsyncHttpTask().execute(url);
+        overridePendingTransition(R.anim.lefttoright,R.anim.stable);
     }
 
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {

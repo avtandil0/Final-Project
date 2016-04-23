@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -54,7 +53,6 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
                 int position = holder.getPosition();
                 MyFixtures fixturesItem = fixtureList.get(position);
 
-                Toast.makeText(mContext, (CharSequence) myFixtures.getFirstClubUrl, Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(mContext,TeamAcivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("href", myFixtures.getFirstClubUrl);
@@ -62,6 +60,7 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
                 extras.putString("playersHref",playersHref);
                 intent.putExtras(extras);
                 mContext.startActivity(intent);
+
 
             }
         };
@@ -72,7 +71,6 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Custom
                 int position = holder.getPosition();
                 MyFixtures fixturesItem = fixtureList.get(position);
 
-                Toast.makeText(mContext, (CharSequence) myFixtures.getSecondClubUrl, Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(mContext,TeamAcivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("href", myFixtures.getSecondClubUrl);

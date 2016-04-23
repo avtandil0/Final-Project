@@ -45,18 +45,17 @@ public class FixturesActivity extends AppCompatActivity {
         // Downloading data from below url
         final String url = myurl;
         new FixturesActivity.AsyncHttpTask().execute(url);
+        overridePendingTransition(R.anim.lefttoright, R.anim.stable);
 
     }
 
     
 
     public class AsyncHttpTask extends AsyncTask<String, Void, Integer> {
-
         @Override
         protected void onPreExecute() {
             setProgressBarIndeterminateVisibility(true);
         }
-
         @Override
         protected Integer doInBackground(String... params) {
             Integer result = 0;
@@ -104,17 +103,14 @@ public class FixturesActivity extends AppCompatActivity {
             JSONObject jsonObject=new JSONObject(result);
             JSONArray jsonArray=jsonObject.optJSONArray("fixtures");
             fixtures = new ArrayList<>();
-
             for (int i = jsonArray.length()-1; i >=0; i--) {
                 JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                 MyFixtures item = new MyFixtures();
-
                 JSONObject jsonObject3=jsonObject1.getJSONObject("_links");
                 JSONObject jsonObject4=jsonObject3.optJSONObject("homeTeam");
                 item.getFirstClubUrl=jsonObject4.optString("href");
                 jsonObject3=jsonObject3.optJSONObject("awayTeam");
                 item.getSecondClubUrl=jsonObject3.optString("href");
-
                 item.firstClub=jsonObject1.optString("homeTeamName");
                 item.secondClub=jsonObject1.optString("awayTeamName");
                 item.status=jsonObject1.optString("status");
